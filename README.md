@@ -7,13 +7,13 @@ Simple project for a technical test in Laravel. The objective of this assignment
 ## Documentation
 
 
-#### Technology
+### Technology
 
 To approach this assignment we would like you to use PHP and Laravel Framework since this is our main stack.
 Apart from that, feel free to apply any other acquired knowledge or skill at your discretion.
 
 
-#### Scope
+### Scope
 
 A customer approached us to build a web blogging platform.
 
@@ -32,14 +32,14 @@ Our customer is a very popular blogger, who generates between 2 and 3 posts an h
 ## Project insight
 
 
-#### Database Schema
+### Database Schema
 
 Given the scope and requirements of the project, the database schema is very simple: a table for users and a table for posts, with a **one-to-many relation** user-post. 
 
 ![Database Schema](db_schema.png "Database Schema")
 
 
-#### Getting started
+### Getting started
 
 First clone the repository and open the project.
 
@@ -54,7 +54,7 @@ Run php artisan migrate to create all tables in database and execute AdminUserSe
 Run php artisan serve to get the project running on localhost
 
 
-#### Fetching client's API
+### Fetching client's API
 
 For this part, I've developed a new artisan command called fetch-client-posts. If executed, it will fetch posts from the clients API and insert them in DB associated to the default user (admin).
 
@@ -65,21 +65,21 @@ To start the cron execution you can run php artisan schedule:run. The way Larave
 In a more easy fashion and for the sake of testing, we could just execute the new command - either way works.
 
 
-#### Register and login
+### Register and login
 
 Placeholder
 
 
-#### Reading posts
+### Reading posts
 
 Placeholder
 
 
-#### Creating posts
+### Creating posts
 
 Placeholder
 
 
-#### Protecting against traffic peaks
+### Protecting against traffic peaks
 
 Throttle, recaptcha
