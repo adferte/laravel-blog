@@ -2,11 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\PostController;
 use App\Post;
 use App\User;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class FetchClientPosts extends Command
@@ -94,6 +95,15 @@ class FetchClientPosts extends Command
                         if (!$formatError) {
                             foreach ($postsToSave as $post) {
                                 $post->save();
+                            }
+
+                            // Clear caches
+                            $cacheKeys = [
+                                PostController::POST_CACHE_KEY,
+                                PostController::POST_CACHE_KEY . $user->id,
+                            ];
+                            foreach ($cacheKeys as $cacheKey) {
+                                Cache::forget($cacheKey);
                             }
                         }
 

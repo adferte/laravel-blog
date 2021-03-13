@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <div class="row" style="font-size: large">Showing {{ Request::get('mine') == 1 ? 'my posts' : 'all posts' }}</div>
         @foreach($posts as $post)
             <div style="background-color: white; border-radius: 25px; padding: 10px 20px; margin: 40px 10px; box-shadow: 3px 3px 3px 4px #ccc;">
                 <div class="row">
