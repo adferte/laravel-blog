@@ -111,7 +111,7 @@ You can register an new account and log in, having a unique email associated wit
 
 ### Reading posts
 
-Main page is **/posts**. It provides a basic, paginated view of all posts existing at the moment. If you are a logged in user, you can access the menu on top right menu and click My Posts to see a filtered view with only the post you have created. Go back to the menu to see All Posts again.
+Main page is **/posts**. It provides a basic, paginated view of all posts existing at the moment. If you are a logged in user, you can click My Posts on the top right to see a filtered view with only the post you have created.
 
 The filter is sent via query string parameter **?mine=1**. This filter in inaccessible to guest users, and even if they manually type it onto the URL, it will be ignored and will show all posts anyways. 
 
