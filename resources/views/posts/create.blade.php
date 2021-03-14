@@ -4,10 +4,8 @@
     <div class="container">
         <form action="{{ url('posts') }}" enctype="multipart/form-data" method="post">
             @csrf
-
             <div class="row">
                 <div class="col-6 offset-3">
-
                     <div class="row">
                         <h1>Create Post</h1>
                     </div>
@@ -20,7 +18,6 @@
                             </span>
                         @endif
                     </div>
-
                     <div class="row">
                         <label for="body" class="col-md-4 col-form-label">Body</label>
                         <textarea rows="10" id="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" name="body">{{ old('body') }}</textarea>
@@ -30,11 +27,9 @@
                             </span>
                         @endif
                     </div>
-
                     <div class="row pt-4">
                         <button class="btn btn-primary">Create</button>
                     </div>
-
                 </div>
             </div>
         </form>

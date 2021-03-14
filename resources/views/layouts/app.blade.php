@@ -57,16 +57,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('posts.create') }}">{{ __('Create Post') }}</a>
                         </li>
-                        @if (Request::get('mine') == 1 )
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('posts.index') }}">{{ __('All Posts') }}</a>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link"
-                                   href="{{ route('posts.index') . '?mine=1' }}">{{ __('My Posts') }}</a>
-                            </li>
-                        @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.index') }}">{{ __('All Posts') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.index') . '?mine=1' }}">{{ __('My Posts') }}</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
