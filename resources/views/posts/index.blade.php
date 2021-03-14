@@ -6,7 +6,7 @@
             <div class="row" style="font-size: large">There are no posts yet</div>
         @else
             <div class="row" style="font-size: large">
-                Showing {{ Request::get('mine') == 1 ? 'my posts' : 'all posts' }}
+                Showing {{ Auth::check() && Request::get('mine') == 1 ? 'my posts' : 'all posts' }}
             </div>
             @foreach($posts as $post)
                 <div

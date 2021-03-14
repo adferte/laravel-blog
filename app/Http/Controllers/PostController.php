@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
-    const POST_CACHE_DURATION = 600; // seconds
-    const POST_CACHE_KEY = 'posts'; // seconds
+    const POST_CACHE_KEY = 'posts';
     const POSTS_PER_PAGE = 5;
 
     public function index(Request $request)
     {
         $page = $request->get('page') ?? 1;
-        $userPosts = $request->get('mine') ?? 0;
+        $mine = $request->get('mine') ?? 0;
+
         // Filter by user id ONLY if user is authenticated and parameter mine == 1
-        $userPosts = (Auth::check() && $userPosts == 1);
+        $userPosts = (Auth::check() && $mine == 1);
 
         // Set cache key
         $cacheKey = self::POST_CACHE_KEY;
@@ -30,11 +30,8 @@ class PostController extends Controller
         }
 
         // Return cached posts if they exist, else we retrieve them all from database
-        $posts = Cache::remember($cacheKey, self::POST_CACHE_DURATION, function () use ($userPosts) {
-            $posts = $userPosts ?
-                Post::where('user_id', Auth::id()) :
-                Post::where('id', '>', 0);
-            return $posts->latest()->get();
+        $posts = Cache::rememberForever($cacheKey, function () use ($userPosts) {
+            return Post::with('user')->userPosts($userPosts)->latest()->get();
         });
 
         // Log to check out which source we use: cache or database

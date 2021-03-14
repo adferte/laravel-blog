@@ -24,15 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Fetch posts from client platform and integrate them in our database
-        // Execute every hour in production
-        // Execute every minute en local development to be able test it with php artisan schedule:run
-
-        if (app()->environment() === 'prod') {
-            $schedule->command('fetch-client-posts')->everyFifteenMinutes()->withoutOverlapping();
-        } else {
-            $schedule->command('fetch-client-posts')->everyMinute()->withoutOverlapping();
-        }
+        $schedule->command('fetch-client-posts')->everyTenMinutes()->withoutOverlapping();
     }
 
     /**

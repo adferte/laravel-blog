@@ -95,9 +95,7 @@ To start the cron execution you can run:
 ```
 php artisan schedule:run
 ```
-The way Laravel is built, **schedule:run** will not run a command set to be executed every 10 minutes if not executed in a XX:X0 minute, so to be able to test this locally anytime, I've put an environment check and execute it every minute on environments different from production.
-
-In a more easy fashion and for the sake of testing, we could just execute the new command - either way works:
+The way Laravel is built, **schedule:run** will not run a command set to be executed every 10 minutes if not executed in a XX:X0 minute. To be able to test this locally anytime, we need to execute the new command:
 ```
 php artisan fetch-client-posts
 ```
@@ -106,12 +104,12 @@ php artisan fetch-client-posts
 
 In order to speed up the development time, I've used the Laravel-provided auth package which creates a complete scaffolding of a secure login/register system.
 
-You can register an new account and log in, having a unique email associated with it, but guest users can also visit the page.
+You can register a new account and log in, having a unique email associated with it, but guest users can also visit the page.
 
 
 ### Reading posts
 
-Main page is **/posts**. It provides a basic, paginated view of all posts existing at the moment. If you are a logged in user, you can click My Posts on the top right to see a filtered view with only the post you have created.
+Main page is **/posts**. It provides a basic, paginated view of all posts existing at the moment. If you are a logged-in user, you can click My Posts on the top right to see a filtered view with only the post you have created.
 
 The filter is sent via query string parameter **?mine=1**. This filter in inaccessible to guest users, and even if they manually type it onto the URL, it will be ignored and will show all posts anyways. 
 
@@ -127,4 +125,4 @@ This creation form provides two inputs for title and body of a post, and both ar
 
 As a mean of protection against traffic peaks, I have set up a caching system that serves current posts without consulting the database.
 
-Data is cached separately depending on the user trying to the get all the posts or his own posts. These cached data update every 10 minutes, or when new posts are created or fetched from the client's API, whatever happens first.
+Data is cached separately depending on the user trying to the get all the posts or his own posts. These cached data update when new posts are created or fetched from the client's API.
